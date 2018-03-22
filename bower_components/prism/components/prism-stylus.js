@@ -2,7 +2,7 @@
 	var inside = {
 		'url': /url\((["']?).*?\1\)/i,
 		'string': {
-			pattern: /("|')(?:[^\\\r\n]|\\(?:\r\n|[\s\S]))*?\1/,
+			pattern: /("|')(?:(?!\1)[^\\\r\n]|\\(?:\r\n|[\s\S]))*\1/,
 			greedy: true
 		},
 		'interpolation': null, // See below
@@ -26,13 +26,19 @@
 	inside['interpolation'] = {
 		pattern: /\{[^\r\n}:]+\}/,
 		alias: 'variable',
-		inside: Prism.util.clone(inside)
+		inside: {
+			'delimiter': {
+				pattern: /^{|}$/,
+				alias: 'punctuation'
+			},
+			rest: inside
+		}
 	};
 	inside['func'] = {
 		pattern: /[\w-]+\([^)]*\).*/,
 		inside: {
 			'function': /^[^(]+/,
-			rest: Prism.util.clone(inside)
+			rest: inside
 		}
 	};
 

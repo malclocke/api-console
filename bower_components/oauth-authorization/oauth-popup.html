@@ -6,11 +6,16 @@
     <style>*[hidden] { display: none; } </style>
   </head>
   <body>
-    <p id="general-error" hidden>A general error occured.</p>
+    <h1>Sending authorization data to the application</h1>
+    <p id="general-error" hidden>
+      The window wasn't opened as a popup and therefore it can't pass authorization information.<br/>
+      This is an error.
+    </p>
     <script>
     var $ = function(selector, target) {
       return (target || document).querySelector(selector);
     };
+    var messageTarget = (window.opener || window.parent || window.top);
 
     var Auth = {
       init: function() {
@@ -24,6 +29,7 @@
 
       handleResponse: function(data) {
         var params = {
+          'oauth2response': true,
           'tokenTime': Date.now()
         };
         data.split('&').forEach(function(p) {
@@ -41,12 +47,13 @@
           params[name] = decodeURIComponent(item[1]);
           params[origName] = decodeURIComponent(item[1]);
         });
-        window.opener.postMessage(params, window.opener.location.origin);
+        messageTarget.postMessage(params, '*');
       }
     };
-    if (!window.opener || !window.opener.postMessage) {
+    if (!messageTarget || !messageTarget.postMessage) {
       var elm = $('#general-error');
       elm.removeAttribute('hidden');
+      console.error('Cannot post message to target window.');
     } else {
       Auth.init();
     }
