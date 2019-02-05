@@ -2105,7 +2105,7 @@
 ],
 "shacl:raw": [
 {
-"@value": "  id: \"R34fg663H9KW9MMSKISI\"\n  name: \"Pawel Psztyc\"\n  birthday: \"1983-10-20\"\n  gender: male\n  url: \"https://domain.com/profile/pawel.psztyc\"\n  image:\n    url: https://domain.com/profile/pawel.psztyc/image\n    thumb: https://domain.com/profile/pawel.psztyc/image/thumb\n  tagline: Some text about me.\n  language: en_GB\n"
+"@value": "\n  id: \"R34fg663H9KW9MMSKISI\"\n  name: \"Pawel Psztyc\"\n  birthday: \"1983-10-20\"\n  gender: male\n  url: \"https://domain.com/profile/pawel.psztyc\"\n  image:\n    url: https://domain.com/profile/pawel.psztyc/image\n    thumb: https://domain.com/profile/pawel.psztyc/image/thumb\n  tagline: Some text about me.\n  language: en_GB\n"
 }
 ],
 "sourcemaps:sources": [
@@ -2149,7 +2149,7 @@
 ],
 "sourcemaps:value": [
 {
-"@value": "[(10,0)-(20,0)]"
+"@value": "[(9,0)-(20,0)]"
 }
 ]
 }
@@ -2677,7 +2677,7 @@
 ],
 "shacl:raw": [
 {
-"@value": "  url: https://domain.com/profile/pawel.psztyc/image\n  thumb: https://domain.com/profile/pawel.psztyc/image/thumb\n"
+"@value": "\n  url: https://domain.com/profile/pawel.psztyc/image\n  thumb: https://domain.com/profile/pawel.psztyc/image/thumb\n"
 }
 ],
 "sourcemaps:sources": [
@@ -2721,7 +2721,7 @@
 ],
 "sourcemaps:value": [
 {
-"@value": "[(22,0)-(24,0)]"
+"@value": "[(21,0)-(24,0)]"
 }
 ]
 }
@@ -4079,7 +4079,7 @@
 ],
 "shacl:raw": [
 {
-"@value": "  url: https://domain.com/profile/pawel.psztyc/image\n  thumb: https://domain.com/profile/pawel.psztyc/image/thumb\n"
+"@value": "\n  url: https://domain.com/profile/pawel.psztyc/image\n  thumb: https://domain.com/profile/pawel.psztyc/image/thumb\n"
 }
 ],
 "sourcemaps:sources": [
@@ -4123,7 +4123,7 @@
 ],
 "sourcemaps:value": [
 {
-"@value": "[(22,0)-(24,0)]"
+"@value": "[(21,0)-(24,0)]"
 }
 ]
 }
@@ -4947,7 +4947,7 @@
 ],
 "shacl:raw": [
 {
-"@value": "  id: \"R34fg663H9KW9MMSKISI\"\n  name: \"Pawel Psztyc\"\n  birthday: \"1983-10-20\"\n  gender: male\n  url: \"https://domain.com/profile/pawel.psztyc\"\n  image:\n    url: https://domain.com/profile/pawel.psztyc/image\n    thumb: https://domain.com/profile/pawel.psztyc/image/thumb\n  tagline: Some text about me.\n  language: en_GB\n"
+"@value": "\n  id: \"R34fg663H9KW9MMSKISI\"\n  name: \"Pawel Psztyc\"\n  birthday: \"1983-10-20\"\n  gender: male\n  url: \"https://domain.com/profile/pawel.psztyc\"\n  image:\n    url: https://domain.com/profile/pawel.psztyc/image\n    thumb: https://domain.com/profile/pawel.psztyc/image/thumb\n  tagline: Some text about me.\n  language: en_GB\n"
 }
 ],
 "sourcemaps:sources": [
@@ -4991,7 +4991,7 @@
 ],
 "sourcemaps:value": [
 {
-"@value": "[(10,0)-(20,0)]"
+"@value": "[(9,0)-(20,0)]"
 }
 ]
 }
@@ -5594,7 +5594,7 @@
 ],
 "shacl:raw": [
 {
-"@value": "  url: https://domain.com/profile/pawel.psztyc/image\n  thumb: https://domain.com/profile/pawel.psztyc/image/thumb\n"
+"@value": "\n  url: https://domain.com/profile/pawel.psztyc/image\n  thumb: https://domain.com/profile/pawel.psztyc/image/thumb\n"
 }
 ],
 "sourcemaps:sources": [
@@ -5638,7 +5638,7 @@
 ],
 "sourcemaps:value": [
 {
-"@value": "[(22,0)-(24,0)]"
+"@value": "[(21,0)-(24,0)]"
 }
 ]
 }

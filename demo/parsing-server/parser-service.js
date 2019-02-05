@@ -129,16 +129,32 @@ class ParserService {
   generateModel(doc, from) {
     console.log('Generating model');
     let resolver;
+    let validateProfile;
     switch (from) {
-      case 'raml': resolver = amf.Core.resolver('RAML 1.0'); break;
-      case 'raml8': resolver = amf.Core.resolver('RAML 0.8'); break;
-      case 'oas': resolver = amf.Core.resolver('OAS 2.0'); break;
+      case 'raml': resolver =
+        amf.Core.resolver('RAML 1.0');
+        validateProfile = amf.ProfileNames.RAML;
+        break;
+      case 'raml8':
+        resolver = amf.Core.resolver('RAML 0.8');
+        validateProfile = amf.ProfileNames.RAML08;
+        break;
+      case 'oas':
+        resolver = amf.Core.resolver('OAS 2.0');
+        validateProfile = amf.ProfileNames.OAS;
+        break;
     }
-    if (resolver) {
-      doc = resolver.resolve(doc, 'editing');
-    }
-    const opts = amf.render.RenderOptions().withSourceMaps.withCompactUris;
-    return generator.generateString(doc, opts);
+    return amf.AMF.validate(doc, validateProfile)
+    .then((result) => {
+      console.log(result.toString());
+    })
+    .then(() => {
+      if (resolver) {
+        doc = resolver.resolve(doc, 'editing');
+      }
+      const opts = amf.render.RenderOptions().withSourceMaps.withCompactUris;
+      return generator.generateString(doc, opts);
+    });
   }
 
   /**
