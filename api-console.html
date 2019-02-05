@@ -330,7 +330,9 @@ the License.
    * @appliesMixin ApiElements.AmfHelperMixin
    */
   class ApiConsole extends ApiElements.AmfHelperMixin(Polymer.Element) {
-    static get is() {return 'api-console';}
+    static get is() {
+      return 'api-console';
+    }
     static get properties() {
       return {
         /**
@@ -731,10 +733,14 @@ the License.
      * change.
      *
      * @param {String} url Model location
+     * @param {?String} old Previous value.
      */
-    _modelLocationChanged(url) {
+    _modelLocationChanged(url, old) {
       if (!url) {
         return;
+      }
+      if (old !== undefined) {
+        window.location.hash = '#docs/summary/summary';
       }
       const xhr = new XMLHttpRequest();
       xhr.addEventListener('error', (error) => this._apiLoadErrorHandler(error));
@@ -755,6 +761,39 @@ the License.
         return;
       }
       this.set('amfModel', data);
+      Polymer.RenderStatus.afterNextRender(this, () => {
+        this._hashToSelection();
+      });
+    }
+    /**
+     * Applies cussrent URL has value to a selection.
+     * It is used when the component is initialized to allow deep linking.
+     */
+    _hashToSelection() {
+      let hash = location.hash.replace('#', '');
+      if (!hash) {
+        return;
+      }
+      let [page, type, id] = hash.split('/');
+      if (page && this.page !== page) {
+        this.page = page;
+      }
+      if (id) {
+        try {
+          id = decodeURIComponent(id);
+          if (id[0] !== '#' || id.substr(0, 6) !== 'amf://') {
+            id = decodeURIComponent(id);
+          }
+          if (id !== this.selectedShape) {
+            this.selectedShape = undefined;
+            this.selectedShape = id;
+          }
+        } catch (_) {}
+      }
+      if (type && this.selectedShapeType !== type) {
+        this.selectedShapeType = undefined;
+        this.selectedShapeType = type;
+      }
     }
     /**
      * Called by `_modelLocationChanged` when error occurred when getting API data.
